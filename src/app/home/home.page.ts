@@ -22,7 +22,6 @@ export class HomePage {
       for (let i=0; i<categories.length; i++) {
         this.mealCat.push(categories[i].strCategory);
       }
-      return this.mealCat;
     });
   }
 
