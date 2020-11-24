@@ -19,11 +19,9 @@ export class HomePage {
 
   loadCat() {
     this.mealDb.getMealCat().subscribe( categories => {
-      // console.log(categories);
       for (let i=0; i<categories.length; i++) {
         this.mealCat.push(categories[i].strCategory);
       }
-      console.log(this.mealCat);
       return this.mealCat;
     });
   }
