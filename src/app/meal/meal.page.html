@@ -1,0 +1,47 @@
+<ng-container *ngIf="meal$ | async as meal">
+  <!-- asyncPipe permet de souscrire à l'observable directement dans le template et de récupérer les valeurs souscrites dans la variable meal (https://angular.io/api/common/AsyncPipe)-->
+  <ion-header>
+    <ion-toolbar>
+      <ion-back-button defaultHref=""></ion-back-button>
+      <ion-title>{{meal.strMeal}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <iframe id="ytPlayer" width="100%" height="360" frameborder="0" [src]="getYoutubeLink(meal)"></iframe>
+
+    <ion-item lines="none">
+      <h1>
+        {{meal.strMeal}}
+        <ion-badge color="secondary">{{meal.strCategory}}</ion-badge>
+      </h1>
+    </ion-item>
+<ion-grid>
+  <ion-row>
+    <ion-col size="6">
+      <ion-list>
+        <ion-list-header>
+          <ion-label>Ingrédients:</ion-label>
+        </ion-list-header>
+        <ion-item *ngFor="let ingredient of ingredients">
+          <ion-label>{{ ingredient }}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+    <ion-col size="6">
+      <ion-list>
+        <ion-list-header>
+          <ion-label>Mesures:</ion-label>
+        </ion-list-header>
+        <ion-item *ngFor="let mesure of mesures">
+          <ion-label>{{ mesure }}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+    <ion-item lines="none">
+      <a routerLink="">Return home</a>
+    </ion-item>
+  </ion-content>
+</ng-container>

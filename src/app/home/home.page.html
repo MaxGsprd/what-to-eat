@@ -1,20 +1,24 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title> What to eat ?</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label>Catégories: </ion-label>
+      <ion-select placeholder="Choisir"  [(ngModel)]="selectedCat" (ionChange)="loadData()">
+        <ion-select-option *ngFor="let cat of mealCat">{{cat}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <img *ngIf="!meals" src='https://www.themealdb.com/images/ingredients/Lime.png'>
+  <ion-grid *ngIf="meals">
+    <ion-row>
+      <ion-col size="6" *ngFor="let meal of meals" [routerLink]="['/meal', meal.idMeal]">
+        <img [src]="meal.strMealThumb"/>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
